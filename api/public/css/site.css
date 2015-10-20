@@ -1,0 +1,62 @@
+/* 
+    Document   : site
+    Created on : Feb 13, 2014, 1:33:06 PM
+    Author     : Ankit
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+root { 
+    display: block;
+}
+
+body,html {
+margin: 0 5px;
+font-family: Verdana,sans-serif;
+}
+h1 {
+font-size: 1.4em;
+ font-style: italic;
+color: green;
+}
+th {
+   
+     font-style: italic;
+     color: black ;
+}
+td {
+   padding-right: 25px;
+   font-style: italic;
+    color: gr;
+}
+a {
+padding-right: 25px;
+font-style: italic;
+color: olive;
+}
+/* Table */
+th {
+text-align: left;
+}
+td, th {
+
+}
+/* style form */
+form dt {
+width: 100px;
+display: block;
+float: left;
+clear: left;
+}
+form dd {
+margin-left: 0;
+float: left;
+}
+form #submitbutton {
+margin-left: 100px;
+}

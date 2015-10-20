@@ -1,0 +1,213 @@
+<?php if($this->getLatLon){ ?>
+
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Share location
+        <small>Get all the crimes reported by HerGROUP members</small>
+      </h1>
+      <ol class="breadcrumb">
+        <!-- <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li> -->
+        <!-- <li class="active">Here</li> -->
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <div class="row">
+        <div class="col-md-4">
+      </div>
+
+      <div class="col-md-4">
+
+        <div class="alert alert-info alert-dismissable" >
+            <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+            <h4><i class="icon fa fa-info"></i> Alert!</h4>
+            Please share your current location to display the crimes reported near by.
+          </div>
+
+          <div>  <button class="btn btn-block btn-danger btn-lg" id="allowLocation">Allow</button></div>
+
+          <center><div id="showProgress" class="overlay" style="display:none"><i class="fa fa-refresh fa-spin"></i> </div><center>
+
+
+    </div>
+
+      <div class="col-md-4">
+
+
+
+      </div><!-- /.row -->
+
+    </section><!-- /.content -->
+  </div><!-- /.content-wrapper -->
+  <script>
+console.log("No Lat lon found");
+
+
+
+  </script>
+
+ <?php }else if($this->noResults){
+
+
+    ?>
+
+
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Crimes reported near by
+      <small>Get all the crimes reported by HerGROUP members</small>
+    </h1>
+    <ol class="breadcrumb">
+      <!-- <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li> -->
+      <!-- <li class="active">Here</li> -->
+    </ol>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+
+    <div class="row">
+      <div class="col-md-8">
+      No results found in your area !
+    </div>
+
+    <div class="col-md-4">
+
+                <div class="alert alert-info alert-dismissable" id="showAlert">
+                    <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                    <h4><i class="icon fa fa-info"></i> Alert!</h4>
+                    Click on markers to read the reports
+                  </div>
+
+    </div><!-- /.row -->
+
+  </section><!-- /.content -->
+</div><!-- /.content-wrapper -->
+
+
+<?php }else{?>
+
+
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Crimes reported near by
+        <small>Get all the crimes reported by HerGROUP members</small>
+      </h1>
+      <ol class="breadcrumb">
+        <!-- <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li> -->
+        <!-- <li class="active">Here</li> -->
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <div class="row">
+        <div class="col-md-8">
+        <div id="aggregatedMap" style=" height: 500px;">  </div>
+      </div>
+
+      <div class="col-md-4">
+
+                  <div class="alert alert-info alert-dismissable" id="showAlert">
+                      <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                      <h4><i class="icon fa fa-info"></i> Alert!</h4>
+                      Click on markers to read the reports
+                    </div>
+
+                <div class="box box-widget widget-user-2" style="display:none" id="displayReports">
+                  <!-- Add the bg color to the header using any of the bg-* classes -->
+                  <div class="widget-user-header bg-aqua-active">
+                    <div class="widget-user-image">
+                      <img alt="User Avatar" src="assets/template/dist/img/girl.png" class="img-circle">
+                      <div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="remove">
+                        <i class="fa fa-times"></i>
+                        </button>
+                      </div>
+                    </div><!-- /.widget-user-image -->
+
+                    <h3 class="widget-user-username reportDetails" id="nicknameR"></h3>
+                    <h5 class="widget-user-desc reportDetails" id="reportedOnR"></h5>
+                  </div>
+                  <div class="box-footer no-padding">
+                    <ul class="nav nav-stacked">
+                      <li><a href="#" >Report ID <span class="pull-right badge bg-red reportDetails" id="reportIdR"></span></a></li>
+                      <li><a href="#">Full Address<div class="box-body"><em><p id="fullAddressR" class="reportDetails"></p></em> </div></li>
+                      <li><a href="#">Description<div class="box-body"><strong><p id="fullDescriptionR" class="reportDetails"></p></strong> </div></li>
+                      <li><a href="#" >Latitude <span class="pull-right badge bg-aqua reportDetails" id="latR"></span></a></li>
+                        <li><a href="#" >Longitude <span class="pull-right badge bg-aqua reportDetails" id="lonR"></span></a></li>
+                    </ul>
+
+                  </div>
+                </div>
+
+
+
+
+              <div class="box box-primary" style="display:none" id="crimeDescPane">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Enter description</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                  <div class="box-body">
+                    <div class="form-group">
+                            <textarea placeholder="Enter description..." rows="3" class="form-control" id="cdT"></textarea>
+                          </div>
+                          <div class="callout callout-danger" style="display:none" id="descriptionTextError" style="display:none">
+                           <h4>Cannot submit without description</h4>
+                         </div>
+                  </div><!-- /.box-body -->
+                  <div class="box-footer">
+                    <button class="btn btn-danger" id="sendCrimeReport" style="float:right">Submit</button>
+
+              </div><!-- /.box -->
+
+
+
+            </div>
+
+            <div class="alert alert-success"  style="display:none" id="reportNotification">
+                      <h4>	<i class="icon fa fa-check"></i> Reported!</h4>
+                      Your report ID is <span id="repId"><span>. Thank you for reporting !
+                    </div>
+
+
+
+
+
+      </div><!-- /.row -->
+
+    </section><!-- /.content -->
+  </div><!-- /.content-wrapper -->
+  <script>
+  var crimeData = <?php echo json_encode($this->crimesNearby); ?>;
+  var nick = <?php echo json_encode($this->nickname); ?>;
+  var userLat =   <?php echo json_encode($this->userLat); ?>;
+  var userLon =   <?php echo json_encode($this->userLon); ?>;
+
+  if(crimeData && userLat && userLon)
+  {
+    console.log("yes");
+    console.log(crimeData);
+    loadNearByCrimesNow(nick,userLat,userLon,crimeData);
+    console.log("Started loading the Reported crimes nearby map...");
+  }
+  else {
+    console.log("crimeData is not available in DB, check crimeData && userLat && userLon");
+  }
+  </script>
+
+<?php } ?>

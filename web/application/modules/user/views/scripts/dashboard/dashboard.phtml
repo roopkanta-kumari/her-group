@@ -1,0 +1,135 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1 >
+      Welcome   <?php
+      if($this->session->nickname){
+        ?>
+        <span style="text-transform:capitalize;">
+        <?php
+        echo $this->session->nickname;
+        ?>
+      </span>
+        <?php
+      }else {
+         echo $this->session->email;
+       } ?>
+
+<?php
+  if(!($this->session->nickname)){ ?>
+ <small><i class="fa fa-circle-o text-red"></i> <strong><a href="#" data-toggle="modal" data-target="#addModal" >Add your nickname</a></strong> <i class="fa fa-circle-o text-red"></i></small>
+    <?php
+  }
+  ?>
+
+
+    </h1>
+    <ol class="breadcrumb">
+      <!-- <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li> -->
+      <!-- <li class="active">Here</li> -->
+    </ol>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+                <div class="col-lg-3 col-xs-6">
+                  <!-- small box -->
+                  <div class="small-box bg-aqua">
+                    <div class="inner">
+                      <h3>2</h3>
+                      <p>Total Users</p>
+                    </div>
+                    <div class="icon">
+                      <i class="ion ion-person-add"></i>
+                    </div>
+                    <a class="small-box-footer" href="#">More info <i class="fa fa-arrow-circle-right"></i></a>
+                  </div>
+                </div><!-- ./col -->
+                <div class="col-lg-3 col-xs-6">
+                  <!-- small box -->
+                  <div class="small-box bg-green">
+                    <div class="inner">
+                      <h3>0</h3>
+                      <p>Total reported crimes</p>
+                    </div>
+                    <div class="icon">
+                      <i class="fa fa-map-marker"></i>
+                    </div>
+                    <a class="small-box-footer" href="#">More info <i class="fa fa-arrow-circle-right"></i></a>
+                  </div>
+                </div><!-- ./col -->
+                <div class="col-lg-3 col-xs-6">
+                  <!-- small box -->
+                  <div class="small-box bg-yellow">
+                    <div class="inner">
+                      <h3>0</h3>
+                      <p>Total reported crimes nearby</p>
+                    </div>
+                    <div class="icon">
+                      <i class="fa fa-taxi"></i>
+                    </div>
+                    <a class="small-box-footer" href="#">More info <i class="fa fa-arrow-circle-right"></i></a>
+                  </div>
+                </div><!-- ./col -->
+                <div class="col-lg-3 col-xs-6">
+                  <!-- small box -->
+                  <div class="small-box bg-red">
+                    <div class="inner">
+                      <h3>0</h3>
+                      <p>Crimes reported by me</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fa fa-user-secret"></i>
+                    </div>
+                    <a class="small-box-footer" href="#">More info <i class="fa fa-arrow-circle-right"></i></a>
+                  </div>
+                </div><!-- ./col -->
+              </div>
+    <!-- Your Page Content Here -->
+
+  </section><!-- /.content -->
+</div><!-- /.content-wrapper -->
+
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel">
+                   <div class="modal-dialog" role="document">
+                       <div class="modal-content">
+                           <div class="modal-header">
+                               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                               <h4 class="modal-title" id="ModalLabel">Select a unique nickname</h4>
+                           </div>
+                           <div class="modal-body" id="ModalBody">
+                             <div class="form-group">
+                               <label for="usr">Pick a nickname</label>
+                               <input type="text" class="form-control" id="userNickname">
+                             </div>
+                             <div class="callout callout-warning" style="display:none" id="spaceNo">
+                              <h4>Spaces not allowed</h4>
+                              <p>Please pick a unique name without any spaces.</p>
+                            </div>
+                            <div class="callout callout-info" style="display:none" id="patternNo">
+                             <h4>Please check nickname pattern</h4>
+                             <p>Your chosen nickname should have 2 or more characters </p>
+                             <p>We accept only alphanumeric nicknames, you are free to use hyphens. </p>
+                           </div>
+                             <div class="callout callout-danger" style="display:none" id="nickNo">
+                              <h4>Nickname not available</h4>
+                              <p>Please pick a unique name to hide your identity</p>
+                            </div>
+                            <div class="callout callout-success" style="display:none" id="nickYes">
+                              <center>
+                             <h4>Nickname is available</h4>
+                             <p>Please confirm to set this as your nickname.</p>
+                          <button type="button" class="btn btn-danger" id="confirmNick">Confirm</button>
+                          <p><strong>Note: You are not allowed to change your nickname in future.</strong></p>
+                        </center>
+                           </div>
+                           </div>
+                           <div class="modal-footer">
+                               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                               <button type="button" class="btn btn-primary" id="add" >Check availability</button>
+                           </div>
+                       </div>
+                   </div>
+               </div>
